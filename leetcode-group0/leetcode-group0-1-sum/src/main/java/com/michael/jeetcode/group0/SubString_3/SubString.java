@@ -1,6 +1,8 @@
 package com.michael.jeetcode.group0.SubString_3;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -9,6 +11,7 @@ import java.util.Set;
 public class SubString {
 
     /**
+     * 暴力法
      * 时间复杂度 O(n*n)
      * @param s
      * @return
@@ -45,11 +48,51 @@ public class SubString {
         return len;
     }
 
+
+    /**
+     * slide window 滑动窗口法
+     * @param s
+     * @return
+     */
+    public static int lengthOfLongestSubstring2(String s) {
+        int n = s.length();
+        int i = 0, j = 0, ans = 0;
+        Set<Character> set = new HashSet<>();
+        while(i < n && j < n) {
+            if (!set.contains(s.charAt(j))) {
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
+            } else {
+                set.remove(s.charAt(i++));
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 优化活动窗口
+     * @param s
+     * @return
+     */
+    public static int lengthOfLongestSubstring3(String s) {
+        int ans = 0, n = s.length();
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0, j = 0; j < n; j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(map.get(s.charAt(j)), i);
+            }
+            ans = Math.max(ans, j - i + 1);
+            map.put(s.charAt(j), j + 1);
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
 
-        String str = "abcabckspoi";
+        String str = "abcadkad";
 
-        System.out.println(lengthOfLongestSubstring(str));
+//        System.out.println(lengthOfLongestSubstring2(str));
+        System.out.println(lengthOfLongestSubstring3(str));
     }
 
 
