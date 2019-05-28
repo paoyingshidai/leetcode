@@ -9,5 +9,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>leetcode-group0-1-sum</module>
+      <module>leetcode-group0-2</module>
   </modules>
 </project>
