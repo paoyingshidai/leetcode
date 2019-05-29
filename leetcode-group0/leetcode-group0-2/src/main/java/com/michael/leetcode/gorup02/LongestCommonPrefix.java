@@ -28,7 +28,8 @@ public class LongestCommonPrefix {
 
     /**
      * 分治法,  通过递归实现，左边跟右边对比
-     *
+     *  时间复杂度 m * log(n)
+     *  空间负责度 log(n)
      * @param strs
      * @return
      */
