@@ -10,5 +10,6 @@
   <modules>
   	<module>leetcode-group0-1-sum</module>
       <module>leetcode-group0-2</module>
+      <module>leetcode-group0-3</module>
   </modules>
 </project>
