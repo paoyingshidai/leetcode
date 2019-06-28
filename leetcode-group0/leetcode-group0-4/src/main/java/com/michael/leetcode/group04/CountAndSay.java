@@ -33,6 +33,11 @@ package com.michael.leetcode.group04;
  */
 public class CountAndSay {
 
+    /**
+     * 递归
+     * @param n
+     * @return
+     */
     public static String countAndSay(int n) {
         if (n == 1) {
             return "1";
@@ -40,6 +45,24 @@ public class CountAndSay {
         String back = countAndSay(n -1);
         String r = count(back);
         return r;
+    }
+
+    /**
+     * 非递归
+     * @param n
+     * @return
+     */
+    public static String countAndSay2(int n) {
+
+        String result = "";
+        for (int i = 0; i <= n; i++) {
+            if (i == 1) {
+                result = "1";
+            } else {
+                result = count(result);
+            }
+        }
+        return result;
     }
 
     public static String count(String data) {
@@ -65,8 +88,8 @@ public class CountAndSay {
 
 //        System.out.println(count("123456"));
 
-//        System.out.println(countAndSay(5));
-        System.out.println(countAndSay(30));     // "312211",
+        System.out.println(countAndSay2(6));
+//        System.out.println(countAndSay(30));     // "312211",
 
 
         /**
@@ -78,6 +101,7 @@ public class CountAndSay {
          * 3.     21
          * 4.     1211
          * 5.     111221
+         * 6.     312211
          *
          *
          *
