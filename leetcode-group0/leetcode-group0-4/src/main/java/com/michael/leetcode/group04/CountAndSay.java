@@ -43,8 +43,7 @@ public class CountAndSay {
             return "1";
         }
         String back = countAndSay(n -1);
-        String r = count(back);
-        return r;
+        return count(back);
     }
 
     /**
