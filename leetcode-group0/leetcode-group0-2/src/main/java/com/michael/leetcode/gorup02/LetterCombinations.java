@@ -22,7 +22,12 @@ public class LetterCombinations {
 
     public static List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
-        getString(digits, digits.length(), 0, result, "");
+        if (digits == "" || digits == null) {
+            return result;
+        } else {
+            getString(digits, digits.length(), 0, result, "");
+        }
+
         return result;
     }
 
@@ -32,6 +37,7 @@ public class LetterCombinations {
             return;
         }
         String data = map.get(digits.charAt(index));
+        if (data == null) return;
         index = index + 1;
         for (int i = 0; i < data.length(); i++) {
             temp = temp + data.charAt(i);
@@ -41,8 +47,10 @@ public class LetterCombinations {
     }
 
     public static void main(String[] args) {
-        String orginString = "234";
+        String orginString = "";
         List<String> result = letterCombinations(orginString);
+        System.out.println(result);
+        System.out.println(result.size());
         result.forEach(System.out::println);
     }
 }
