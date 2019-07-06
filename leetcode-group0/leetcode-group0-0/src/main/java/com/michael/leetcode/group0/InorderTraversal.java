@@ -50,7 +50,8 @@ public class InorderTraversal {
         if (root == null) return new ArrayList<>();
         List<Integer> result = new ArrayList<>();
 
-        traversal3(root, result);
+//        traversal3(root, result);
+        traversal3Iterator(root, result);
 
         return result;
     }
@@ -165,7 +166,7 @@ public class InorderTraversal {
      */
     public void traversal3Iterator(TreeNode root, List<Integer> result) {
 
-        Stack<TreeNode> s = new Stack<TreeNode>();
+        Stack<TreeNode> s = new Stack<>();
         s.push(root);
 
         while( !s.isEmpty() ) {
