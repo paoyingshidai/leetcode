@@ -42,11 +42,13 @@ public class IsValidBST {
      */
     public boolean isValidBST(TreeNode root) {
         if (root == null) return true;
-        if (!isValidBST(root.left)) return false;
-        if (pre != null && pre.val >= root.val) return false;
-        pre = root;
-        return isValidBST(root.right);
+        if (!isValidBST(root.left)) return false;               // 这个递归会一直追寻到某个节点的最左边的叶子节点
+        if (pre != null && pre.val >= root.val) return false;   // 左边的作为 pre, 与根节点进行比较，
+        pre = root;                                             // 然后将根节点作为 pre,
+        return isValidBST(root.right);                          // 与右边的节点进行比较。
     }
+
+
 
 
 
@@ -82,6 +84,15 @@ public class IsValidBST {
 
 //        System.out.println(isValidBST.isValidBST(null));
 
+    }
+
+
+    public boolean isValidate(TreeNode root) {
+        if (root == null) return true;
+        if (!isValidate(root.left)) return false;
+        if (pre != null && pre.val >= root.val) return false;
+        pre = root;
+        return isValidate(root.right);
     }
 
     static class TreeNode {
