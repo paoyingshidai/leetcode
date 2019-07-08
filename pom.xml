@@ -92,5 +92,6 @@
 	<modules>
 		<module>leetcode-group0</module>
         <module>leetcode-group1</module>
+        <module>leetcode-group2</module>
     </modules>
 </project>

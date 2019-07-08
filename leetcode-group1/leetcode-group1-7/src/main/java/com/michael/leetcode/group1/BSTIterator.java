@@ -34,7 +34,7 @@ public class BSTIterator {
     Stack<TreeNode> tree_stack = new Stack<>();
 
     public BSTIterator(TreeNode root) {
-        while(root != null){
+        while(root != null){                //  1、先将树的左斜臂全部压栈
             tree_stack.push(root);
             root = root.left;
         }
@@ -42,16 +42,15 @@ public class BSTIterator {
 
     /** @return the next smallest number */
     public int next() {
-        TreeNode tn = tree_stack.pop();
-        if(tn.right == null) {
-            return tn.val;
-        } else {
+        TreeNode tn = tree_stack.pop();     //  2、取出栈顶
+        int result = tn.val;
+        if(tn.right != null) {
             TreeNode cu = tn.right;
             do {
-                tree_stack.push(cu);
-            } while((cu=cu.left) != null);
-            return tn.val;
+                tree_stack.push(cu);        //  3、如果右边节点存在，则将右边节点的左斜臂压栈
+            } while((cu = cu.left) != null);
         }
+        return result;                      //  4、最后取出当前节点的值
     }
 
     /** @return whether we have a next smallest number */
