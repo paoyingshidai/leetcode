@@ -112,36 +112,53 @@ public class LevelOrder {
      * @return
      */
     public List<List<Integer>> levelOrder3(TreeNode root) {
-        List<List<Integer>> levels = new ArrayList<List<Integer>>();
+        List<List<Integer>> levels = new ArrayList<>();
         if (root == null) return levels;
 
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int level = 0;
         while ( !queue.isEmpty() ) {
-            // start the current level
-            levels.add(new ArrayList<Integer>());
+            levels.add(new ArrayList<>());
 
-            // number of elements in the current level
             int level_length = queue.size();
             for(int i = 0; i < level_length; ++i) {
                 TreeNode node = queue.remove();
 
-                // fulfill the current level
                 levels.get(level).add(node.val);
 
-                // add child nodes of the current level
-                // in the queue for the next level
                 if (node.left != null) queue.add(node.left);
                 if (node.right != null) queue.add(node.right);
             }
-            // go to next level
             level++;
         }
         return levels;
     }
 
 
+    public static void main(String[] args) {
+        TreeNode root0 = new TreeNode(0);
+        TreeNode root1 = new TreeNode(1);
+        TreeNode root2 = new TreeNode(2);
+        TreeNode root3 = new TreeNode(3);
+        TreeNode root4 = new TreeNode(4);
+        TreeNode root5 = new TreeNode(5);
+        TreeNode root6 = new TreeNode(6);
+
+        root2.left = root5;
+        root2.right = root6;
+
+        root1.left = root3;
+        root1.right = root4;
+
+        root0.left = root1;
+        root0.right = root2;
+
+        LevelOrder order = new LevelOrder();
+
+        System.out.println(order.levelOrder3(root0));
+
+    }
 
 
 
