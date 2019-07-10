@@ -93,5 +93,7 @@
 		<module>leetcode-group0</module>
         <module>leetcode-group1</module>
         <module>leetcode-group2</module>
+        <module>leetcode-group5</module>
+        <module>leetcode-group4</module>
     </modules>
 </project>

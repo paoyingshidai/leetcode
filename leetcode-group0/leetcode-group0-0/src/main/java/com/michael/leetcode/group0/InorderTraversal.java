@@ -117,7 +117,7 @@ public class InorderTraversal {
     }
 
     /**
-     * 递归前序遍历
+     * 非递归前序遍历
      * @param root
      * @param result
      */
