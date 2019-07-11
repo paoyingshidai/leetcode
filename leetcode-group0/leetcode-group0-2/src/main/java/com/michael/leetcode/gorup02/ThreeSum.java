@@ -4,6 +4,11 @@ import java.util.*;
 
 public class ThreeSum {
 
+    /**
+     * 暴力破解
+     * @param nums
+     * @return
+     */
     public static List<List<Integer>> threeSum(int[] nums) {
 
         List<List<Integer>> outer = new ArrayList<>();
@@ -32,11 +37,41 @@ public class ThreeSum {
         return outer;
     }
 
+
+    /**
+     * 回溯法：
+     *
+     * @param nums
+     * @return
+     */
+    static List<List<Integer>> result = new ArrayList<>();
+
+    public static List<List<Integer>> threeSum2(int[] nums) {
+        Arrays.sort(nums);
+        backTrace(nums, 0, 0, new ArrayList<>());
+        return result;
+    }
+
+    public static void backTrace(int[] nums, int index, int left, List<Integer> temp) {
+
+        if (left == 0 && temp.size() == 3) {
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for (int i = index; i < nums.length; i++) {
+            temp.add(nums[i]);
+            backTrace(nums, i+1, left - nums[i], temp);
+            temp.remove(temp.size() - 1);
+        }
+    }
+
+
     public static void main(String[] args) {
 
         int[] nums = {-1, 0, 1, 2, -1, -4};
 
-        System.out.println(threeSum(getNums()));
+        System.out.println(threeSum2(nums));
 
 
 //        Set set = new HashSet();

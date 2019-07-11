@@ -6,6 +6,7 @@
     <modules>
         <module>leetcode-group1-7</module>
         <module>leetcode-group1-0</module>
+        <module>leetcode-group1-4</module>
     </modules>
 
     <parent>
