@@ -60,6 +60,8 @@ public class ThreeSum {
         }
 
         for (int i = index; i < nums.length; i++) {
+            // 防止重复
+            if (i > index && nums[i] == nums[i-1]) continue;
             temp.add(nums[i]);
             backTrace(nums, i+1, left - nums[i], temp);
             temp.remove(temp.size() - 1);
