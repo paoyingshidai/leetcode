@@ -32,9 +32,11 @@ public class Subsets {
     List<List<Integer>> result = new LinkedList<>();
 
     public List<List<Integer>> subsets(int[] nums) {
-        for (int k = 0; k <= nums.length; k++) {
-            backTrace(nums, 0, k, new LinkedList<>());
-        }
+
+//        for (int k = 0; k <= nums.length; k++) {
+//            backTrace(nums, 0, k, new LinkedList<>());
+//        }
+            backTrace2(nums, 0, new LinkedList<>());
         return result;
     }
 
@@ -58,6 +60,27 @@ public class Subsets {
         }
     }
 
+    public void backTrace2(int[]nums, int index, LinkedList<Integer> temp) {
+        result.add(new LinkedList<>(temp));
+        System.out.println(temp);
+        for (int i = index; i < nums.length; i++) {
+            temp.add(nums[i]);
+            backTrace2(nums,i+1, temp);
+            temp.removeLast();
+        }
+    }
+
+    /**
+     * []
+     * [1]
+     * [1, 2]
+     * [1, 2, 3]
+     * [1, 3]
+     * [2]
+     * [2, 3]
+     * [3]
+     * @param args
+     */
     public static void main(String[] args) {
         int[] data = new int[]{1,2,3};
         Subsets subsets = new Subsets();
