@@ -61,10 +61,14 @@ public class Subsets {
     }
 
     public void backTrace2(int[]nums, int index, LinkedList<Integer> temp) {
+        // 如果这里没有做限制的话，它会添加所有子集
         result.add(new LinkedList<>(temp));
+
         System.out.println(temp);
         for (int i = index; i < nums.length; i++) {
+            // 这个地方需要控制重复组合
             temp.add(nums[i]);
+            // index 控制是否可以使用相同元素多次
             backTrace2(nums,i+1, temp);
             temp.removeLast();
         }
