@@ -23,28 +23,62 @@ import java.util.*;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Permute {
-
+    List<List<Integer>> res = new ArrayList<>();
 
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        backtrack(nums, res, new ArrayList<>(), new HashSet<>());
+        backtrack(nums, new ArrayList<>(), new HashSet<>());
         return res;
     }
 
 
-    public void backtrack(int[] nums, List<List<Integer>> res, List<Integer> temp, Set<Integer> persition) {
+    public void backtrack(int[] nums, List<Integer> temp, Set<Integer> persition) {
         if (temp.size() == nums.length) {
             res.add(new ArrayList<>(temp));
             return;
         }
         for (int i1 = 0; i1 < nums.length; i1++) {
-            if (persition.contains(i1)) continue;   // 回溯算法的剪枝问题
+            if (persition.contains(i1)) continue;   // 回溯算法的剪枝问题 (位置被访问过就不能访问)
 
             persition.add(i1);
             temp.add(nums[i1]);
-            backtrack(nums, res, temp, persition);
+            backtrack(nums, temp, persition);
             temp.remove(temp.size() - 1);
             persition.remove(i1);
+        }
+    }
+
+    /**
+     * 官方，更优
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> output = new LinkedList();
+
+        // convert nums into list since the output is a list of lists
+        ArrayList<Integer> nums_lst = new ArrayList<>();
+        for (int num : nums)
+            nums_lst.add(num);
+
+        int n = nums.length;
+        backtrack(n, nums_lst, output, 0);
+        return output;
+    }
+
+    public void backtrack(int n,
+                          ArrayList<Integer> nums,
+                          List<List<Integer>> output,
+                          int first) {
+        // if all integers are used up
+        if (first == n)
+            output.add(new ArrayList<>(nums));
+        for (int i = first; i < n; i++) {
+            // place i-th integer first
+            // in the current permutation
+            Collections.swap(nums, first, i);
+            // use next integers to complete the permutations
+            backtrack(n, nums, output, first + 1);
+            Collections.swap(nums, first, i);
         }
     }
 
@@ -55,7 +89,7 @@ public class Permute {
 
         int[] data = new int[]{1,2,3};
 
-        List<List<Integer>> result = permute.permute(data);
+        List<List<Integer>> result = permute.permute2(data);
 
         System.out.println(result);
 
