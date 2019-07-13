@@ -55,7 +55,6 @@ public class Permute {
     public List<List<Integer>> permute2(int[] nums) {
         List<List<Integer>> output = new LinkedList();
 
-        // convert nums into list since the output is a list of lists
         ArrayList<Integer> nums_lst = new ArrayList<>();
         for (int num : nums)
             nums_lst.add(num);
@@ -69,15 +68,13 @@ public class Permute {
                           ArrayList<Integer> nums,
                           List<List<Integer>> output,
                           int first) {
-        // if all integers are used up
         if (first == n)
             output.add(new ArrayList<>(nums));
         for (int i = first; i < n; i++) {
-            // place i-th integer first
-            // in the current permutation
+            // 交换
             Collections.swap(nums, first, i);
-            // use next integers to complete the permutations
             backtrack(n, nums, output, first + 1);
+            // 复原
             Collections.swap(nums, first, i);
         }
     }
