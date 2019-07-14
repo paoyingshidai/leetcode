@@ -28,6 +28,12 @@ package com.michael.leetcode.group04;
 public class SearchInsert {
 
 
+    /**
+     * 循环 时间复杂度 O(n)
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int searchInsert(int[] nums, int target) {
 
         for (int i = 0; i < nums.length; i++) {
@@ -39,16 +45,49 @@ public class SearchInsert {
                 return nums.length;
             }
         }
-
         return 0;
     }
+
+
+    /**
+     * 二分查找
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int searchInsertMainint(int[] nums, int target) {
+        if (nums[nums.length-1] < target) {
+            return nums.length;
+        }
+        return searchInsert(nums, 0, nums.length - 1, target);
+    }
+
+
+    public static int searchInsert(int[] nums, int start, int end, int target) {
+
+        int mid = (start + end) / 2;
+
+        if (start == end) {
+            return start;
+        }
+
+        if (nums[mid] >= target) {
+            return searchInsert(nums, start, mid, target);
+        } else {
+            return searchInsert(nums, mid + 1, end, target);
+        }
+    }
+
+
 
     public static void main(String[] args) {
 
         int[] data = new int[] {1, 3, 5, 5, 7};
         int[] data2 = new int[] {};
 
-        System.out.println(searchInsert(data2, 8));
+//        System.out.println(searchInsert(data2, 8));
+
+        System.out.println(searchInsertMainint(data, 6));
 
 
 
