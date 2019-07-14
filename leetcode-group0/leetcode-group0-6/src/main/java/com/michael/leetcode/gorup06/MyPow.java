@@ -29,6 +29,66 @@ public class MyPow {
 
     public double myPow(double x, int n) {
 
-        return 2;
+        double result = 1.0;
+
+        if (n > 0) {
+            result = pow(x, n);
+        } else if (n == 0) {
+            return 1;
+        } else {
+            result = 1 / pow(x, -n);
+        }
+        return result;
+    }
+
+
+    /**
+     * 官方推荐：快速幂乘， X^n = X^(n/2) * X^(n/2)
+     * @param x
+     * @param n
+     * @return
+     */
+    public double myPow2(double x, int n) {
+        long N = n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+
+        return fastPow(x, N);
+    }
+    private double fastPow(double x, long n) {
+        if (n == 0) {
+            return 1.0;
+        }
+        double half = fastPow(x, n / 2);
+        if (n % 2 == 0) {   // long / 2 之后，只有最后一步 n 才会等于 1.
+            return half * half;
+        } else {
+            return half * half * x;
+        }
+    }
+
+
+
+    /**
+     * O(n) 时间超出限制
+     * @param x
+     * @param n
+     * @return
+     */
+    private double pow(double x, int n) {
+        double result = 1.0;
+        for (int i = 0; i < n; i++) {
+            result *= x;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        MyPow pow = new MyPow();
+//        System.out.println(pow.myPow(2, -2));
+        System.out.println(pow.myPow2(2, 9));
+
     }
 }
