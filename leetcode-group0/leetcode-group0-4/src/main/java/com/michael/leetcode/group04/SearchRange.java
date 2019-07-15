@@ -45,24 +45,25 @@ public class SearchRange {
 
 
 
-    // returns leftmost (or rightmost) index at which `target` should be
-    // inserted in sorted array `nums` via binary search.
     private int extremeInsertionIndex(int[] nums, int target, boolean left) {
         int lo = 0;
         int hi = nums.length;
 
         while (lo < hi) {
             int mid = (lo + hi) / 2;
+
+            // 决定指针向左移还是向右移， 如果目标值小于中间值，或者与中间值相等并且向左，则指针向左边易懂。
+            // （可以参考下面的最大值和最小值的做法）  || (left && target == nums[mid]) 这一行是区分向左还是向右的
             if (nums[mid] > target || (left && target == nums[mid])) {
                 hi = mid;
-            }
-            else {
-                lo = mid+1;
+            } else {
+                lo = mid+1;     // 右边这里加了 1，后面的右边结果需要 - 1
             }
         }
 
         return lo;
     }
+
 
     /**
      *
@@ -79,8 +80,7 @@ public class SearchRange {
 
         int leftIdx = extremeInsertionIndex(nums, target, true);
 
-        // assert that `leftIdx` is within the array bounds and that `target`
-        // is actually in `nums`.
+        // 没有找到最小
         if (leftIdx == nums.length || nums[leftIdx] != target) {
             return targetRange;
         }
@@ -92,15 +92,66 @@ public class SearchRange {
     }
 
 
+    /**
+     * 查找最早出现的值
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int searchMin(int[] nums, int target) {
+
+        int lo = 0;
+        int hi = nums.length;
+
+        while(lo < hi) {
+            int mid = (lo + hi) / 2;
+
+            if(nums[mid] >= target) {
+                hi = mid;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return nums[lo] == target ? lo : -1;
+    }
+
+
+    /**
+     * 查找最晚出现的值 详细的可以参考
+     * https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/er-fen-cha-zhao-suan-fa-xi-jie-xiang-jie-by-labula/
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int searchMax(int[] nums, int target) {
+
+        int lo = 0;
+        int hi = nums.length;
+
+        while(lo < hi) {
+            int mid = (lo + hi) / 2;
+            // 与 searchMin 相差了一个 =
+            if (nums[mid] > target) {
+                hi = mid;
+            } else {
+                lo = mid+1;     // 右边这里加了 1，后面的右边结果需要 - 1
+            }
+        }
+        return nums[lo-1] == target ? lo-1 : -1;
+    }
+
 
     public static void main(String[] args) {
 
         SearchRange range = new SearchRange();
-        int[] data = new int[]{5, 7, 7, 8, 8, 8, 10};
-        range.searchRange(data, 8);
-        for (int i : range.searchRange(data, 5)) {
-            System.out.println(i);
-        }
+        int[] data = new int[]{5, 7, 8, 8, 8, 8, 8};
+        int[] data2 = new int[]{8};
+//        range.searchRange(data, 8);
+        System.out.println(range.searchMin(data, 1));
+        System.out.println(range.searchMax(data, 8));
+//        for (int i : range.searchRange2(data, 8)) {
+//            System.out.println(i);
+//        }
 
     }
 }
