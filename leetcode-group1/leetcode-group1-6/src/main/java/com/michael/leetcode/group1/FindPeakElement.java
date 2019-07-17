@@ -53,11 +53,39 @@ public class FindPeakElement {
         return result;
     }
 
+
+
+    public int findPeakElement(int[] nums) {
+
+        if (nums.length == 1) return 0;
+
+        int lo = 0;
+        int hi = nums.length - 1;
+
+        while(lo < hi) {
+            int mid = (lo + hi) / 2;
+
+            if (nums[mid] > nums[mid+1]) {
+                hi = mid;
+            } else if (nums[mid] < nums[mid+1]) {
+                lo = mid + 1;
+            } else if (nums[mid] == nums[mid+1]) {
+                hi = mid;
+            }
+        }
+        return lo;
+    }
+
     public static void main(String[] args) {
         FindPeakElement element = new FindPeakElement();
 
         int[] data = new int[]{1, 2, 1, 3, 5, 6, 4};
-        int[] data2 = new int[]{1, 2, 2};
+        int[] data2 = new int[]{1,2};
+        System.out.println(element.findPeakElement1(data));
+        System.out.println(element.findPeakElement(data));
+
+        System.out.println();
         System.out.println(element.findPeakElement1(data2));
+        System.out.println(element.findPeakElement(data2));
     }
 }
