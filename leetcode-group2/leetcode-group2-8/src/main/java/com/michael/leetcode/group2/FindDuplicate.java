@@ -1,5 +1,6 @@
 package com.michael.leetcode.group2;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,7 +29,7 @@ import java.util.Set;
 public class FindDuplicate {
 
     /**
-     * 现行扫描
+     * 线性扫描
      * @param nums
      * @return
      */
@@ -74,16 +75,26 @@ public class FindDuplicate {
     }
 
 
+    /**
+     * 排序法
+     * @param nums
+     * @return
+     */
     public int findDuplicate(int[] nums) {
-
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i-1] == nums[i]) return nums[i];
+        }
         return 0;
     }
 
 
     public static void main(String[] args) {
         FindDuplicate duplicate = new FindDuplicate();
-        int[] data = new int[]{1, 4, 6, 6, 6, 2, 3};
+//        int[] data = new int[]{1, 4, 6, 6, 6, 2, 3};
+        int[] data = new int[]{1,2,1};
 
+//        System.out.println(duplicate.findDuplicate2(data));
         System.out.println(duplicate.findDuplicate3(data));
     }
 
