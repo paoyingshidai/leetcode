@@ -15,7 +15,7 @@
         <artifactId>jeetcode</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>leetcode-group0</artifactId>
+    <artifactId>leetcode-group1</artifactId>
     <packaging>pom</packaging>
 
 

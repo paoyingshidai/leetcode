@@ -54,7 +54,11 @@ public class FindPeakElement {
     }
 
 
-
+    /**
+     * 二分查找法
+     * @param nums
+     * @return
+     */
     public int findPeakElement(int[] nums) {
 
         if (nums.length == 1) return 0;

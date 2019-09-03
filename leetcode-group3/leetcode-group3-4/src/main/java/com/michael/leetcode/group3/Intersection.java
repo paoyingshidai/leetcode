@@ -1,5 +1,9 @@
 package com.michael.leetcode.group3;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
+
+import java.beans.ConstructorProperties;
 import java.util.HashSet;
 
 /**
