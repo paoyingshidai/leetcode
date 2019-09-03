@@ -168,7 +168,7 @@ public class InorderTraversal {
         Stack<TreeNode> s = new Stack<>();
         s.push(root);
 
-        while( !s.isEmpty() ) {
+        while(!s.isEmpty()) {
             TreeNode node = s.pop();
             if(node.left != null) {
                 s.push(node.left);
@@ -179,7 +179,7 @@ public class InorderTraversal {
             }
             result.add(0, node.val);          // 这个设计很微妙，先将左节点入栈，然后右节点入栈，取出中节点，
                                                     // 然后下一个循环时，取出右节点，再左节点。这样顺序是 中->右->左，
-                                                    // 但是在队列添加的时候将顺序调换，就使得顺序正确。
+                                                    // 但是在队列添加的时候将顺序调换，就使得顺序正确 左->右->中。
         }
     }
 

@@ -22,9 +22,37 @@ package com.michael.leetcode.group3;
  */
 public class LengthOfLIS {
 
+    /**
+     * 滑动窗口
+     * @param nums
+     * @return
+     */
+    private int res = 0;
     public int lengthOfLIS(int[] nums) {
 
-        return 0;
+        int left  = 0;
+        int right  = 1;
+
+        while(right < nums.length) {
+
+            if (nums[right-1] < nums[right]) {
+                res = Math.max(res, right - left + 1);
+            } else {
+                left = right;
+            }
+            right++;
+        }
+
+        return res;
     }
+
+    public static void main(String[] args) {
+
+        LengthOfLIS lengthOfLIS = new LengthOfLIS();
+        int[] data = new int[]{10,9,2,5,3,7,101,18};
+
+        System.out.println(lengthOfLIS.lengthOfLIS(data));
+    }
+
 
 }
