@@ -2,7 +2,7 @@ package com.michael.leetcode.group2;
 
 public class MinSubArrayLen {
 
-    private int res = Integer.MAX_VALUE;
+        private int res = Integer.MAX_VALUE;
 
     /**
      * 滑动窗口

@@ -45,7 +45,7 @@ public class TwoSum {
     }
 
     /**
-     * 指针法 时间复杂度 O(n)
+     * 指针法 时间复杂度 O(n) 这个方法的前提是有序数组
      * @param numbers
      * @param target
      * @return
@@ -58,7 +58,7 @@ public class TwoSum {
         while(left < right) {
             int sum = numbers[left] + numbers[right];
             if (sum == target) {
-                return new int[]{left, right};
+                return new int[]{left+1, right+1};
             } else if (sum > target) {
                 right--;
             } else if (sum < target) {
