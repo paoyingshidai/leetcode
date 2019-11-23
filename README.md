@@ -6,8 +6,7 @@ leetcode 算法
 ## 算法分类
 
 ### 回溯算法
-学号|姓名|分数
+题目序号|说明|链接
 -|-|-
-小明|男|75
-小红|女|79
-小陆|男|92
+698|划分为k个相等的子集|[链接](https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets/)
+
