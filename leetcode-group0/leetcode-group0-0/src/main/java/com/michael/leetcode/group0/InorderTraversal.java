@@ -6,18 +6,18 @@ import java.util.Stack;
 
 /**
  * 给定一个二叉树，返回它的中序 遍历。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * 输入: [1,null,2,3]
- *    1
- *     \
- *      2
- *     /
- *    3
- *
+ * 1
+ * \
+ * 2
+ * /
+ * 3
+ * <p>
  * 输出: [1,3,2]
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/binary-tree-inorder-traversal
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
@@ -59,6 +59,7 @@ public class InorderTraversal {
 
     /**
      * 递归中序遍历
+     *
      * @param root
      * @param result
      */
@@ -77,6 +78,7 @@ public class InorderTraversal {
 
     /**
      * 迭代中序遍历
+     *
      * @param root
      * @param result
      */
@@ -97,9 +99,9 @@ public class InorderTraversal {
         } while (!s.isEmpty() || root != null);
     }
 
-
     /**
      * 递归前序遍历
+     *
      * @param root
      * @param result
      */
@@ -117,6 +119,7 @@ public class InorderTraversal {
 
     /**
      * 非递归前序遍历
+     *
      * @param root
      * @param result
      */
@@ -140,8 +143,10 @@ public class InorderTraversal {
         }
     }
 
+
     /**
      * 递归后序遍历
+     *
      * @param root
      * @param result
      */
@@ -158,8 +163,9 @@ public class InorderTraversal {
         result.add(root.val);
     }
 
-     /**
+    /**
      * 递归后序遍历
+     *
      * @param root
      * @param result
      */
@@ -168,18 +174,18 @@ public class InorderTraversal {
         Stack<TreeNode> s = new Stack<>();
         s.push(root);
 
-        while(!s.isEmpty()) {
+        while (!s.isEmpty()) {
             TreeNode node = s.pop();
-            if(node.left != null) {
+            if (node.left != null) {
                 s.push(node.left);
             }
 
-            if(node.right != null) {
+            if (node.right != null) {
                 s.push(node.right);
             }
             result.add(0, node.val);          // 这个设计很微妙，先将左节点入栈，然后右节点入栈，取出中节点，
-                                                    // 然后下一个循环时，取出右节点，再左节点。这样顺序是 中->右->左，
-                                                    // 但是在队列添加的时候将顺序调换，就使得顺序正确 左->右->中。
+            // 然后下一个循环时，取出右节点，再左节点。这样顺序是 中->右->左，
+            // 但是在队列添加的时候将顺序调换，就使得顺序正确 左->右->中。
         }
     }
 
@@ -219,7 +225,10 @@ public class InorderTraversal {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }
 
