@@ -25,7 +25,7 @@ import java.util.Stack;
 public class PermuteUnique {
 
     private List<List<Integer>> res = new ArrayList<>();
-    private boolean[] used;
+    private boolean[] used;         //   这个 boolean 数组用于在循环的时候进行剪枝处理
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         int len = nums.length;
@@ -69,7 +69,7 @@ public class PermuteUnique {
 
 
     public static void main(String[] args) {
-        int[] nums = {1, 1, 2};
+        int[] nums = {1, 1, 1, 2};
         PermuteUnique solution = new PermuteUnique();
         List<List<Integer>> permuteUnique = solution.permuteUnique(nums);
         System.out.println(permuteUnique);
