@@ -44,6 +44,7 @@ public class SolveNQueens {
     // queens positions
     int queens[];
 
+    /** 判断是否可以相互攻击 */
     public boolean isNotUnderAttack(int row, int col) {
         int res = rows[col] + hills[row - col + 2 * n] + dales[row + col];
         return (res == 0) ? true : false;
