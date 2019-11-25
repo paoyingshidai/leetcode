@@ -1,6 +1,5 @@
 package com.michael.leetcode.group0;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
