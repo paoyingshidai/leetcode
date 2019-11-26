@@ -33,12 +33,23 @@ import java.util.List;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class SolveNQueens {
-    int rows[];
-    // "hill" diagonals
+
+//    https://leetcode-cn.com/problems/n-queens/solution/nhuang-hou-by-leetcode/
+
+    int rows[];         // 列占位
+
+    /**
+     * 这里的对角线表示方式比较微妙
+     */
+    // "hill" diagonals， 主对角线 '\'  row - col + 2*n
     int hills[];
-    // "dale" diagonals
+
+    // "dale" diagonals   次对角线 '/' 这里从 0 开始 row + col
     int dales[];
+
+    // 皇后的个数
     int n;
+
     // output
     List<List<String>> output = new ArrayList();
     // queens positions
@@ -46,16 +57,16 @@ public class SolveNQueens {
 
     /** 判断是否可以相互攻击 */
     public boolean isNotUnderAttack(int row, int col) {
-        int res = rows[col] + hills[row - col + 2 * n] + dales[row + col];
+        int res = rows[col] + hills[row - col + 2 * n] + dales[row + col]; // 列 + 对角线都不能有皇后
         return (res == 0) ? true : false;
     }
 
     /** 放置皇后 */
     public void placeQueen(int row, int col) {
-        queens[row] = col;
-        rows[col] = 1;
-        hills[row - col + 2 * n] = 1;  // "hill" diagonals
-        dales[row + col] = 1;   //"dale" diagonals
+        queens[row] = col;              // 皇后的位置，包含了行列信息
+        rows[col] = 1;                  // 列占位
+        hills[row - col + 2 * n] = 1;   // 主对角线占位
+        dales[row + col] = 1;           // 次对角线占位
     }
 
     /** 移除皇后 */
@@ -81,6 +92,12 @@ public class SolveNQueens {
     }
 
     /** 回溯 */
+    /**
+     * n 皇后问题的关键并不是回溯算法，而是问题的表述，如何用数组来表示 皇后的位置
+     *
+     *
+     * @param row
+     */
     public void backtrack(int row) {
         for (int col = 0; col < n; col++) {
             if (isNotUnderAttack(row, col)) {
