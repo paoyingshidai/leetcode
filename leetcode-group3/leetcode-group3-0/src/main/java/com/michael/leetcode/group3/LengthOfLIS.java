@@ -23,7 +23,7 @@ package com.michael.leetcode.group3;
 public class LengthOfLIS {
 
     /**
-     * 滑动窗口
+     * 滑动窗口，只能解决连续上升的数列
      * @param nums
      * @return
      */
@@ -46,12 +46,44 @@ public class LengthOfLIS {
         return res;
     }
 
+
+    /**
+     * 官方解题，动态规划
+     * @param nums
+     * @return
+     */
+    public int lengthOfLIS2(int[] nums) {
+
+        if (nums.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        int maxans = 1;
+        for (int i = 1; i < dp.length; i++) {
+            int maxval = 0;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    maxval = Math.max(maxval, dp[j]);
+                }
+            }
+            dp[i] = maxval + 1; // 算上自己
+            maxans = Math.max(maxans, dp[i]);
+        }
+        return maxans;
+
+//        作者：LeetCode
+//        链接：https://leetcode-cn.com/problems/longest-increasing-subsequence/solution/zui-chang-shang-sheng-zi-xu-lie-by-leetcode/
+//        来源：力扣（LeetCode）
+//        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    }
+
     public static void main(String[] args) {
 
         LengthOfLIS lengthOfLIS = new LengthOfLIS();
         int[] data = new int[]{10,9,2,5,3,7,101,18};
 
-        System.out.println(lengthOfLIS.lengthOfLIS(data));
+        System.out.println(lengthOfLIS.lengthOfLIS2(data));
     }
 
 
