@@ -4,30 +4,81 @@ import java.util.Arrays;
 
 /**
  * 假设按照升序排序的数组在预先未知的某个点上进行了旋转。
- *
+ * <p>
  * ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
- *
+ * <p>
  * 搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。
- *
+ * <p>
  * 你可以假设数组中不存在重复的元素。
- *
+ * <p>
  * 你的算法时间复杂度必须是 O(log n) 级别。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: nums = [4,5,6,7,0,1,2], target = 0
  * 输出: 4
  * 示例 2:
- *
+ * <p>
  * 输入: nums = [4,5,6,7,0,1,2], target = 3
  * 输出: -1
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/search-in-rotated-sorted-array
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Search {
 
+    /**
+     * 这种写法与 84 题一样, 算法复杂度，与官方的差不多
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int search4(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int start = 0;
+        int end = nums.length - 1;
+        int mid;
+        while (start <= end) {
+            mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            // 这里需要处理特殊情况 1，3，1，1，1
+            if (nums[start] == nums[mid]) {
+                start++;
+                continue;
+            }
+            //前半部分有序
+            if (nums[start] < nums[mid]) {
+                //target在前半部分
+                if (nums[mid] > target && nums[start] <= target) {
+                    end = mid - 1;
+                } else {  // 否则，去后半部分找
+                    start = mid + 1;
+                }
+            } else {
+                //后半部分有序
+                //target在后半部分
+                if (nums[mid] < target && nums[end] >= target) {
+                    start = mid + 1;
+                } else {  //否则，去后半部分找
+                    end = mid - 1;
+
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 这里进行了排序，不符合要求
+     * @param nums
+     * @param target
+     * @return
+     */
     public int search3(int[] nums, int target) {
         Arrays.sort(nums);
         int lo = 0;
@@ -47,14 +98,13 @@ public class Search {
     }
 
 
-
-
     /**********************************************************************************/
-    int [] nums;
+    int[] nums;
     int target;
 
     /**
      * 找到最小的值（即旋转点）
+     *
      * @param left
      * @param right
      * @return
@@ -79,6 +129,7 @@ public class Search {
 
     /**
      * 旋转点
+     *
      * @param left
      * @param right
      * @return
