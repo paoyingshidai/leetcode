@@ -68,16 +68,16 @@ public class InsertionSortList {
         ListNode listNode1 = new ListNode(6);
         ListNode listNode2 = new ListNode(1);
         ListNode listNode3 = new ListNode(7);
-        ListNode listNode4 = new ListNode(3);
-        ListNode listNode5 = new ListNode(12);
-        ListNode listNode6 = new ListNode(4);
+//        ListNode listNode4 = new ListNode(3);
+//        ListNode listNode5 = new ListNode(12);
+//        ListNode listNode6 = new ListNode(4);
 
         listNode0.next = listNode1;
         listNode1.next = listNode2;
         listNode2.next = listNode3;
-        listNode3.next = listNode4;
-        listNode4.next = listNode5;
-        listNode5.next = listNode6;
+//        listNode3.next = listNode4;
+//        listNode4.next = listNode5;
+//        listNode5.next = listNode6;
 
         ListNode p = listNode0;
         while (p != null) {
