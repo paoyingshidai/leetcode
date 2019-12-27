@@ -36,6 +36,9 @@ public class ReverseKGroup {
      * 反转链表
      * @param head
      * @return
+     *
+     * 解释：https://blog.csdn.net/qq_42351880/article/details/88637387
+     *
      */
     public static ListNode reverseList(ListNode head) {
 
@@ -43,10 +46,10 @@ public class ReverseKGroup {
         ListNode pre = null;
 
         while(cur != null) {
-            ListNode next = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = next;
+            ListNode next = cur.next;   // 断开
+            cur.next = pre;             // 链接下一个元素
+            pre = cur;                  // 移动 pre 指针
+            cur = next;                 // 下一个周期
         }
         return pre;
     }

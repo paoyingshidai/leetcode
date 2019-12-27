@@ -4,20 +4,20 @@ import java.util.*;
 
 /**
  * 给定一个没有重复数字的序列，返回其所有可能的全排列。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * 输入: [1,2,3]
  * 输出:
  * [
- *   [1,2,3],
- *   [1,3,2],
- *   [2,1,3],
- *   [2,3,1],
- *   [3,1,2],
- *   [3,2,1]
+ * [1,2,3],
+ * [1,3,2],
+ * [2,1,3],
+ * [2,3,1],
+ * [3,1,2],
+ * [3,2,1]
  * ]
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/permutations
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
@@ -49,6 +49,7 @@ public class Permute {
 
     /**
      * 官方，更优
+     *
      * @param nums
      * @return
      */
@@ -64,12 +65,10 @@ public class Permute {
         return output;
     }
 
-    public void backtrack(int n,
-                          ArrayList<Integer> nums,
-                          List<List<Integer>> output,
-                          int first) {
-        if (first == n)
-            output.add(new ArrayList<>(nums));
+    public void backtrack(int n, ArrayList<Integer> nums, List<List<Integer>> output, int first) {
+
+        if (first == n) output.add(new ArrayList<>(nums));
+
         for (int i = first; i < n; i++) {
             // 交换
             Collections.swap(nums, first, i);
@@ -84,7 +83,7 @@ public class Permute {
 
         Permute permute = new Permute();
 
-        int[] data = new int[]{1,2,3};
+        int[] data = new int[]{1, 2, 3};
 
         List<List<Integer>> result = permute.permute2(data);
 
