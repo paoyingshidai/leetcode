@@ -51,7 +51,7 @@ public class ReverseKGroup {
             pre = cur;                  // 移动 pre 指针
             cur = next;                 // 下一个周期
         }
-        return pre;
+        return pre;                     // 最后是返回 pre, 因为此时，cur == null
     }
 
     public static void main(String[] args) {
