@@ -9,6 +9,8 @@ leetcode 算法
 题目序号|说明|链接
 :--:|:--:|:--:
 698 | 划分为k个相等的子集 | [链接](https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets/)
+46 | 全排列 | [链接](https://leetcode-cn.com/problems/permutations/)
+47 | 全排列II | [链接](https://leetcode-cn.com/problems/permutations-ii/)
 
 ### 集合
 题目序号|说明|链接
