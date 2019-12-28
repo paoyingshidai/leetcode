@@ -49,7 +49,7 @@ public class CombinationSum {
      * @param candidates    数据
      * @param target        和
      * @param res           结果集
-     * @param start             指针的位置
+     * @param start         指针的位置
      * @param tempList      由上一层传递下来的保存部分结果的列表
      */
     private static void backtrack(int[] candidates, int target, List<List<Integer>> res, int start, ArrayList<Integer> tempList) {

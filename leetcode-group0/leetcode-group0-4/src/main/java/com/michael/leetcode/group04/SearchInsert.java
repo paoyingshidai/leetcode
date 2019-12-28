@@ -102,7 +102,7 @@ public class SearchInsert {
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] < target) {
-                left = mid + 1;         // 这里是 left = mid = 1 还是 right = mid - 1 也是有技巧的，如果是前者，最终的 left 就会多加1
+                left = mid + 1;         // 这里是 left = mid + 1 还是 right = mid - 1 也是有技巧的，如果是前者，最终的 left 就会多加1
             } else {
                 right = mid;
             }
