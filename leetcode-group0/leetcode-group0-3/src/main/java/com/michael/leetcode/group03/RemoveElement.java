@@ -25,7 +25,7 @@ public class RemoveElement {
 
 
         for (int datum : data) {
-//            System.out.println(datum);
+            System.out.println(datum);
         }
 
     }

@@ -49,20 +49,22 @@ public class CombinationSum {
      * @param candidates    数据
      * @param target        和
      * @param res           结果集
-     * @param i             指针的位置
-     * @param tmp_list      由上一层传递下来的保存部分结果的列表
+     * @param start             指针的位置
+     * @param tempList      由上一层传递下来的保存部分结果的列表
      */
-    private static void backtrack(int[] candidates, int target, List<List<Integer>> res, int i, ArrayList<Integer> tmp_list) {
-        if (target < 0) return;     // 不符合的，则返回
+    private static void backtrack(int[] candidates, int target, List<List<Integer>> res, int start, ArrayList<Integer> tempList) {
+        if (target < 0) return;     // 不符合的，则返回， 这里并不是判断他的深度
         if (target == 0) {          // 符合条件的
-            res.add(new ArrayList<>(tmp_list));
+            res.add(new ArrayList<>(tempList));
             return;
         }
-        for (int start = i; start < candidates.length; start++) {
-            if (target < candidates[start]) break;      // 如果候选值比目标值大，则寻找下一个
-            tmp_list.add(candidates[start]);            // 先加入列表
-            backtrack(candidates, target - candidates[start], res, start, tmp_list);    // 更深一层
-            tmp_list.remove(tmp_list.size() - 1);   // 下面一层处理完后，处理当前层的下一个前，将前面添加的元素移除
+        for (int i = start; i < candidates.length; i++) {
+
+            if (target < candidates[i]) break;      // 剪枝，如果候选值比目标值大，则寻找下一个
+
+            tempList.add(candidates[i]);            // 先加入列表
+            backtrack(candidates, target - candidates[i], res, i, tempList);    // 更深一层
+            tempList.remove(tempList.size() - 1);   // 下面一层处理完后，处理当前层的下一个前，将前面添加的元素移除
         }
     }
 

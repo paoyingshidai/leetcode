@@ -48,6 +48,22 @@ public class RemoveDuplicates {
 //        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     }
 
+    public static int[] removeDuplicates3(int[] nums) {
+
+        for (int i = 1; i < nums.length; i++) {
+            int j = i - 1;
+            if (nums[j] == nums[i]) {
+                int k = i;
+                while (k < nums.length) {
+                    nums[k - 1] = nums[k];
+                    k++;
+                }
+            }
+        }
+
+        return nums;
+    }
+
     public static int removeDuplicates(int[] nums) {
 
         if (nums == null || nums.length == 0) return 0;
@@ -70,14 +86,17 @@ public class RemoveDuplicates {
 
         int[] data = {0, 0, 1, 1, 1, 2, 3, 4, 4, 4};
 
-        int result = removeDuplicates(new int[]{});
+//        int result = removeDuplicates(new int[]{});
+//        int result = removeDuplicates(data);
 
-        System.out.println(result);
+        removeDuplicates3(data);
+
+//        System.out.println(result);
         System.out.println();
 
 
         for (int datum : data) {
-//            System.out.println(datum);
+            System.out.printf("%d,", datum);
         }
 
     }

@@ -59,6 +59,7 @@ public class CombinationSum2 {
             if(i > index && candidates[i] == candidates[i-1])
                 continue;
             temp.add(candidates[i]);
+            // index+1, 表示不能取自己
             backTrace(candidates, i+1, target - candidates[i], temp);
             temp.remove(temp.size() - 1);
         }
