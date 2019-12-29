@@ -33,14 +33,14 @@ package com.michael.leetcode.group0;
  */
 public class IsValidBST {
 
-    TreeNode pre = null;
+    TreeNode pre = null;        // 前指针
 
     /**
-     * 左边的任何一个节点的值都比右边任何一个只要小 即：left(max) < right(min)
+     * 左边的任何一个节点的值都比右边任何一个只要小 即：max(left) < min(right)
      * @param root
      * @return
      */
-    public boolean isValidBST(TreeNode root) {
+    public boolean isValidBST(TreeNode root) {  // 这个 return 具有传递性，只要有一个 false， 父运算就为 false
         if (root == null) return true;
         if (!isValidBST(root.left)) return false;               // 这个递归会一直追寻到某个节点的最左边的叶子节点
         if (pre != null && pre.val >= root.val) return false;   // 左边的作为 pre, 与根节点进行比较，

@@ -21,6 +21,12 @@ leetcode 算法
 
 
 ### 树
+1、树的遍历（递归与非递归）
+2、树的深度
+3、二叉排序树的校验
+4、树的距离
+5、树节点的序号（比如取出第 K 大的节点）
+
 题目序号|说明|链接
 :--:|:--:|:--:
 98  | 验证二叉搜索树 | [链接](https://leetcode-cn.com/problems/validate-binary-search-tree/)
