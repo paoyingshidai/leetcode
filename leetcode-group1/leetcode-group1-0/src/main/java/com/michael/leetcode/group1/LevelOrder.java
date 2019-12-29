@@ -84,10 +84,16 @@ public class LevelOrder {
      */
     List<List<Integer>> levels = new ArrayList<List<Integer>>();
 
+    /**
+     * 深度优先递归算法
+     * 相当于前序遍历
+     * @param node
+     * @param level
+     */
     public void helper(TreeNode node, int level) {
-        // start the current level
+        // 每开始新的一层就添加一个列表， 小技巧
         if (levels.size() == level)
-            levels.add(new ArrayList<Integer>());
+            levels.add(new ArrayList<>());
 
         // fulfil the current level
         levels.get(level).add(node.val);
