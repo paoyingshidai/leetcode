@@ -1,5 +1,6 @@
 package com.michael.leetcode.group2;
 
+import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -54,16 +55,16 @@ public class kthSmallest {
      * @return
      */
     public int kthSmallest(TreeNode root, int k) {
-        Stack<TreeNode> tree_stack = new Stack<>();
+        Stack<TreeNode> treeStack = new Stack<>();
         int tempIndex = 0;
 
         while (root != null) {
-            tree_stack.push(root);
+            treeStack.push(root);
             root = root.left;
         }
 
-        while(!tree_stack.isEmpty()) {
-            TreeNode cur = tree_stack.pop();
+        while(!treeStack.isEmpty()) {
+            TreeNode cur = treeStack.pop();
 
             tempIndex++;
             if (tempIndex == k) return cur.val;
@@ -71,10 +72,37 @@ public class kthSmallest {
             if (cur.right != null) {
                 TreeNode node = cur.right;
                 do {
-                    tree_stack.push(node);
+                    treeStack.push(node);
                 } while ((node = node.left) != null);
             }
         }
+        return 0;
+    }
+
+    /**
+     * 修改后, 直接中序遍历，妹访问一个节点就 ++， 这种中序遍历写法更加容易记忆
+     * @param root
+     * @param k
+     * @return
+     */
+    public int kthSmallest2(TreeNode root, int k) {
+        Stack<TreeNode> stack = new Stack<>();
+        int tempIndex = 0;
+
+        do {
+            while(root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+
+            if (!stack.isEmpty()) {
+                TreeNode value = stack.pop();
+                tempIndex++;
+                if (tempIndex == k) return value.val;
+                root = value.right;
+            }
+        } while (root != null || !stack.isEmpty());
+
         return 0;
     }
 
@@ -87,9 +115,31 @@ public class kthSmallest {
     private int res = Integer.MAX_VALUE, count;
     public int kthSmallest1(TreeNode root, int k) {
         count = k;
-        inorder(root);
+        inorder2(root);
         return res;
     }
+
+
+    /**
+     * 递归中序遍历
+     * @param root
+     */
+    private void inorder2(TreeNode root) {
+
+        if (root.left != null) {
+            inorder2(root.left);
+        }
+        if(--count == 0) res = root.val;
+
+        if (root.right != null) {
+            inorder2(root.right);
+        }
+    }
+
+    /**
+     * 递归中序遍历，另一种写法
+     * @param root
+     */
     private void inorder(TreeNode root) {
         if(root != null) {
             inorder(root.left);
