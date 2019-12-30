@@ -98,5 +98,6 @@
         <module>leetcode-group6</module>
         <module>leetcode-group7</module>
         <module>leetcode-group3</module>
+        <module>leetcode-group9</module>
     </modules>
 </project>
