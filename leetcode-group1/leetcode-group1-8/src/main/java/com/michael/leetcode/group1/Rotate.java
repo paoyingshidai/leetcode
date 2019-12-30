@@ -1,5 +1,10 @@
 package com.michael.leetcode.group1;
 
+import com.sun.jmx.snmp.tasks.ThreadService;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * 189. 旋转数组
  * 给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
@@ -142,19 +147,36 @@ public class Rotate {
     }
 
 
+    public static int a = 1;
+    public static int b;
+    public static int c;
+
+    static {
+        System.out.println(a);
+        a = 2;
+        b = 2;
+    }
+
     public static void main(String[] args) {
-        Rotate rotate = new Rotate();
 
-        int[] data = new int[]{1, 2, 3, 4, 5, 6};
+        ExecutorService service = Executors.newCachedThreadPool();
 
-//        int[] result = rotate.rotate2(data);
-//        rotate.rotate3(data);
+        service.submit(() -> {
+            System.out.println("hello");
+        });
 
-        rotate.rotate(data, 3);
+        service.shutdown();
 
-        for (int i : data) {
-            System.out.println(i);
-        }
+
+
+//        Rotate rotate = new Rotate();
+//        int[] data = new int[]{1, 2, 3, 4, 5, 6};
+////        int[] result = rotate.rotate2(data);
+////        rotate.rotate3(data);
+//        rotate.rotate(data, 3);
+//        for (int i : data) {
+//            System.out.println(i);
+//        }
 
     }
 
