@@ -35,10 +35,14 @@ public class Trie {
     }
 
     private TrieNode searchPrefix(String word) {
+        // 指针
         TrieNode node = root;
+        // 循环字符串
         for (int i = 0; i < word.length(); i++) {
             char curLetter = word.charAt(i);
+            // 当前节点中是否存在这个字符
             if (node.containsKey(curLetter)) {
+                // 如果有的话，指针下移
                 node = node.get(curLetter);
             } else {
                 return null;
