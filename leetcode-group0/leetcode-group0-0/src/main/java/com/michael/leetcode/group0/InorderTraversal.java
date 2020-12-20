@@ -84,19 +84,31 @@ public class InorderTraversal {
      */
     public void traversal1Iterator(TreeNode root, List<Integer> result) {
 
-        Stack<TreeNode> s = new Stack<>();
+        Stack <TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
 
-        do {
-            while (root != null) {
-                s.push(root);
-                root = root.left;
+        while (curr != null || !stack.isEmpty()) {
+            // 把 root 的所有左节点入站
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
             }
-            if (!s.isEmpty()) {
-                TreeNode node = s.pop();
-                result.add(node.val);
-                root = node.right;
-            }
-        } while (!s.isEmpty() || root != null);
+            curr = stack.pop();
+            result.add(curr.val);
+            curr = curr.right;
+        }
+
+//        do {
+//            while (root != null) {
+//                s.push(root);
+//                root = root.left;
+//            }
+//            if (!s.isEmpty()) {
+//                TreeNode node = s.pop();
+//                result.add(node.val);
+//                root = node.right;
+//            }
+//        } while (!s.isEmpty() || root != null);
     }
 
     /**

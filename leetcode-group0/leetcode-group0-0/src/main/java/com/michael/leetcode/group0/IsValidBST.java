@@ -1,5 +1,8 @@
 package com.michael.leetcode.group0;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
  *
@@ -33,6 +36,7 @@ package com.michael.leetcode.group0;
  */
 public class IsValidBST {
 
+    // 左子树最大值，
     TreeNode pre = null;        // 前指针
 
     /**
@@ -46,6 +50,36 @@ public class IsValidBST {
         if (pre != null && pre.val >= root.val) return false;   // 左边的作为 pre, 与根节点进行比较，
         pre = root;                                             // 然后将根节点作为 pre,
         return isValidBST(root.right);                          // 与右边的节点进行比较。
+    }
+
+
+    /**
+     *
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/validate-binary-search-tree/solution/yan-zheng-er-cha-sou-suo-shu-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param root
+     * @return
+     */
+    public boolean isValidBST2(TreeNode root) {
+        Deque<TreeNode> stack = new LinkedList<TreeNode>();
+        double inorder = -Double.MAX_VALUE;
+
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            // 如果中序遍历得到的节点的值小于等于前一个 inorder，说明不是二叉搜索树
+            if (root.val <= inorder) {
+                return false;
+            }
+            inorder = root.val;
+            root = root.right;
+        }
+        return true;
     }
 
 
