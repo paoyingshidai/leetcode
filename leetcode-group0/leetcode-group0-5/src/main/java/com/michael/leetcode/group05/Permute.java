@@ -67,7 +67,10 @@ public class Permute {
 
     public void backtrack(int n, ArrayList<Integer> nums, List<List<Integer>> output, int first) {
 
-        if (first == n) output.add(new ArrayList<>(nums));
+        if (first == n) {
+            output.add(new ArrayList<>(nums));
+            return;
+        }
 
         for (int i = first; i < n; i++) {
             // 交换

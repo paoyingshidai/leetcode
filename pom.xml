@@ -20,20 +20,20 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jooq</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-jooq</artifactId>-->
+<!--		</dependency>-->
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.projectlombok</groupId>-->
+<!--			<artifactId>lombok</artifactId>-->
+<!--			<optional>true</optional>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -50,11 +50,37 @@
 		</plugins>
 	</build>
 
-	<repositories>
+
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>public</id>-->
+<!--			<name>local private nexus</name>-->
+<!--			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+<!--			<releases>-->
+<!--				<enabled>true</enabled>-->
+<!--			</releases>-->
+<!--		</repository>-->
+<!--	</repositories>-->
+<!--	<pluginRepositories>-->
+<!--		<pluginRepository>-->
+<!--			<id>public</id>-->
+<!--			<name>local private nexus</name>-->
+<!--			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+<!--			<releases>-->
+<!--				<enabled>true</enabled>-->
+<!--			</releases>-->
+<!--			<snapshots>-->
+<!--				<enabled>false</enabled>-->
+<!--			</snapshots>-->
+<!--		</pluginRepository>-->
+<!--	</pluginRepositories>-->
+
+		<repositories>
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
 			<url>https://repo.spring.io/snapshot</url>
+<!--			<url>https://maven.aliyun.com/nexus/content/repositories/central/</url>-->
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -63,6 +89,7 @@
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
+<!--			<url>https://maven.aliyun.com/nexus/content/repositories/central/</url>-->
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -74,6 +101,7 @@
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
 			<url>https://repo.spring.io/snapshot</url>
+<!--			<url>https://maven.aliyun.com/nexus/content/repositories/central/</url>-->
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -82,6 +110,7 @@
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
+<!--			<url>https://maven.aliyun.com/nexus/content/repositories/central/</url>-->
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
