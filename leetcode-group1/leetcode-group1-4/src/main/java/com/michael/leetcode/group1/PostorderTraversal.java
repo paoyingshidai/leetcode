@@ -58,6 +58,9 @@ public class PostorderTraversal {
      */
     public void traversal3Iterator(TreeNode root, List<Integer> result) {
 
+        if (root == null) {
+            return;
+        }
         Stack<TreeNode> s = new Stack<>();
         s.push(root);
 
