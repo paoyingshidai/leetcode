@@ -57,8 +57,9 @@ public class Permute {
         List<List<Integer>> output = new LinkedList();
 
         ArrayList<Integer> nums_lst = new ArrayList<>();
-        for (int num : nums)
+        for (int num : nums) {
             nums_lst.add(num);
+        }
 
         int n = nums.length;
         backtrack(n, nums_lst, output, 0);
@@ -83,11 +84,12 @@ public class Permute {
 
         Permute permute = new Permute();
 
-        int[] data = new int[]{1, 2, 3};
+        int[] data = new int[]{1, 2, 3, 4};
 
         List<List<Integer>> result = permute.permute2(data);
 
-        System.out.println(result);
-
+        for (List<Integer> integers : result) {
+            System.out.println(integers);
+        }
     }
 }
