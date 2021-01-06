@@ -40,6 +40,7 @@ public class PermuteUnique {
     }
 
     /**
+     * 组合算法的剪枝算法
      * 官方解题， 注意回溯算法的剪枝处理
      * @param nums
      * @param depth
@@ -69,10 +70,13 @@ public class PermuteUnique {
 
 
     public static void main(String[] args) {
-        int[] nums = {1, 1, 1, 2};
+        int[] nums = {1, 1, 1, 2, 3};
         PermuteUnique solution = new PermuteUnique();
         List<List<Integer>> permuteUnique = solution.permuteUnique(nums);
-        System.out.println(permuteUnique);
+
+        for (List<Integer> integers : permuteUnique) {
+            System.out.println(integers);
+        }
     }
 
 }
