@@ -50,7 +50,8 @@ public class GenerateTrees {
             return allTrees;
         }
 
-        // 枚举可行根节点
+        // 枚举可行根节点, 类似于枚举不同的组合
+        // 这是问题的核心，
         for (int i = start; i <= end; i++) {
             // 获得所有可行的左子树集合
             List<TreeNode> leftTrees = generateTrees(start, i - 1);
@@ -71,6 +72,16 @@ public class GenerateTrees {
         return allTrees;
     }
 
+
+    public static void main(String[] args) {
+
+        GenerateTrees generateTrees = new GenerateTrees();
+        List<TreeNode> treeNodes = generateTrees.generateTrees(3);
+
+        System.out.println(treeNodes);
+    }
+
+
 //    作者：LeetCode-Solution
 //    链接：https://leetcode-cn.com/problems/unique-binary-search-trees-ii/solution/bu-tong-de-er-cha-sou-suo-shu-ii-by-leetcode-solut/
 //    来源：力扣（LeetCode）
@@ -87,6 +98,15 @@ public class GenerateTrees {
           this.left = left;
           this.right = right;
       }
-  }
+
+         @Override
+         public String toString() {
+             return "TreeNode{" +
+                     "val=" + val +
+                     ", left=" + left +
+                     ", right=" + right +
+                     '}';
+         }
+     }
 
 }
