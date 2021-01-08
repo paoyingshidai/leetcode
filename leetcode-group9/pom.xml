@@ -11,6 +11,7 @@
 
     <artifactId>leetcode-group9</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>leetcode-group9-6</module>
     </modules>

@@ -122,11 +122,12 @@
 		<module>leetcode-group0</module>
         <module>leetcode-group1</module>
         <module>leetcode-group2</module>
-        <module>leetcode-group5</module>
-        <module>leetcode-group4</module>
-        <module>leetcode-group6</module>
-        <module>leetcode-group7</module>
-        <module>leetcode-group3</module>
-        <module>leetcode-group9</module>
-    </modules>
+		<module>leetcode-group3</module>
+		<module>leetcode-group4</module>
+		<module>leetcode-group5</module>
+		<module>leetcode-group6</module>
+		<module>leetcode-group7</module>
+		<module>leetcode-group8</module>
+		<module>leetcode-group9</module>
+	</modules>
 </project>
