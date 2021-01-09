@@ -41,6 +41,14 @@
  */
 public class TrimBST {
 
+    /**
+     * 这里的意义在于，树的遍历中 递 的过程可以根据不同的条件进行转向
+     * 切入点是：每个点都与区间做对比
+     * @param root
+     * @param L
+     * @param R
+     * @return
+     */
     public TreeNode trimBST(TreeNode root, int L, int R) {
         if (root == null) return root;
         if (root.val > R) return trimBST(root.left, L, R);
