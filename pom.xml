@@ -129,5 +129,6 @@
 		<module>leetcode-group7</module>
 		<module>leetcode-group8</module>
 		<module>leetcode-group9</module>
-	</modules>
+        <module>offer</module>
+    </modules>
 </project>

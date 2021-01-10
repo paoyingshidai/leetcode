@@ -1,7 +1,5 @@
 package com.michael.leetcode.group1;
 
-import lombok.val;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
