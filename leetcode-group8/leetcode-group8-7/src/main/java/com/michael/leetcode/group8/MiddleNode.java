@@ -30,6 +30,7 @@ package com.michael.leetcode.group8;
 public class MiddleNode {
 
     /**
+     * https://leetcode-cn.com/problems/middle-of-the-linked-list/solution/kuai-man-zhi-zhen-zhu-yao-zai-yu-diao-shi-by-liwei/
      * 快慢指针
      * @param head
      * @return
