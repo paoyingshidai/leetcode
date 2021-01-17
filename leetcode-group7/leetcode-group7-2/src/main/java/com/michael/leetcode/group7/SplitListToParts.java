@@ -1,8 +1,5 @@
 package com.michael.leetcode.group7;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 725. 分隔链表
  * 给定一个头结点为 root 的链表, 编写一个函数以将链表分隔为 k 个连续的部分。
@@ -47,35 +44,38 @@ public class SplitListToParts {
 
     public ListNode[] splitListToParts(ListNode root, int k) {
 
-        int num = 0;
         ListNode cur = root;
+        int N = 0;
         while (cur != null) {
-            num++;
             cur = cur.next;
+            N++;
         }
 
-        Map<Integer, Integer> map = new HashMap<>();
+        // 这里的重要的地方是：切分后，矩阵翻转遍历
+        // width + (i < rem ? 1 : 0)
+        int width = N / k, rem = N % k;
 
-        for (int i = 1; i < num; i++) {
+        ListNode[] ans = new ListNode[k];
+        cur = root;
+        for (int i = 0; i < k; ++i) {
 
-            int j = num / k;
-
-            Integer count = map.get(num % j);
-            if (count == null) {
-                count = 0;
-                map.put(num % j, count);
+            ListNode head = cur;
+            for (int j = 0; j < width + (i < rem ? 1 : 0) - 1; ++j) {
+                if (cur != null) cur = cur.next;
             }
-            map.put(num % j, count++);
-
+            if (cur != null) {
+                ListNode prev = cur;
+                cur = cur.next;
+                prev.next = null;
+            }
+            ans[i] = head;
         }
+        return ans;
 
-
-
-
-
-
-
-        return null;
+//        作者：LeetCode
+//        链接：https://leetcode-cn.com/problems/split-linked-list-in-parts/solution/fen-ge-lian-biao-by-leetcode-2/
+//        来源：力扣（LeetCode）
+//        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     }
 
      public class ListNode {
