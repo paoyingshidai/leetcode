@@ -9,12 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>leetcode-group9</artifactId>
+    <artifactId>leetcode-group15</artifactId>
     <packaging>pom</packaging>
-
     <modules>
-        <module>leetcode-group9-6</module>
-        <module>leetcode-group9-7</module>
+        <module>leetcode-group15-8</module>
+        <module>leetcode-group15-5</module>
     </modules>
 
 

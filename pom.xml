@@ -131,5 +131,6 @@
 		<module>leetcode-group9</module>
         <module>offer</module>
         <module>leetcode-group16</module>
+        <module>leetcode-group15</module>
     </modules>
 </project>
