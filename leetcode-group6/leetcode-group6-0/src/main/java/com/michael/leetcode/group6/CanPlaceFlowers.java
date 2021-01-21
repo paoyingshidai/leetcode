@@ -31,41 +31,33 @@ public class CanPlaceFlowers {
 
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
 
-        int sum = 0;
-        int countZero = 0;
-
-        if (flowerbed.length == 2) {
-            if (flowerbed[0] == 0 && flowerbed[1] == 0) {
-                sum = sum + 1;
-            }
-        } else if (flowerbed.length == 1) {
-            if (flowerbed[0] == 0) {
-                sum = sum + 1;
-            }
-        }
-
-        if (flowerbed.length >= 3 && flowerbed[0] == 0 && flowerbed[1] == 0 && flowerbed[2] == 1) {
-            sum = sum + 1;
-        }
-
-        int len = flowerbed.length;
-
-        if (flowerbed.length >= 3 && flowerbed[len - 1] == 0 && flowerbed[len - 2] == 0 && flowerbed[len - 3] == 1) {
-            sum = sum + 1;
-        }
-
-
-        for (int i = 0; i < flowerbed.length; i++) {
+        int count = 0;
+        int m = flowerbed.length;
+        int prev = -1;
+        for (int i = 0; i < m; i++) {
             if (flowerbed[i] == 1) {
-                sum = sum + (countZero - 1) / 2;
-                countZero = 0;
-            } else {
-                countZero++;
+                if (prev < 0) {
+                    count += i / 2;
+                } else {
+                    count += (i - prev - 2) / 2;
+                }
+                if (count >= n) {
+                    return true;
+                }
+                prev = i;
             }
         }
-        sum = sum + (countZero - 1) / 2;
-        System.out.println(sum);
-        return sum >= n;
+        if (prev < 0) {
+            count += (m + 1) / 2;
+        } else {
+            count += (m - prev - 1) / 2;
+        }
+        return count >= n;
+
+//        作者：LeetCode-Solution
+//        链接：https://leetcode-cn.com/problems/can-place-flowers/solution/chong-hua-wen-ti-by-leetcode-solution-sojr/
+//        来源：力扣（LeetCode）
+//        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     }
 
     public static void main(String[] args) {
