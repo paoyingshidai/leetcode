@@ -156,5 +156,6 @@
         <module>offer</module>
         <module>leetcode-group16</module>
         <module>leetcode-group15</module>
+        <module>leetcode-group12</module>
     </modules>
 </project>

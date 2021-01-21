@@ -3,18 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>jeetcode</artifactId>
+        <artifactId>leetcode-group16</artifactId>
         <groupId>com.michael</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>leetcode-group16</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>leetcode-group16-6</module>
-        <module>leetcode-group-7</module>
-    </modules>
+    <artifactId>leetcode-group-7</artifactId>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
 </project>
