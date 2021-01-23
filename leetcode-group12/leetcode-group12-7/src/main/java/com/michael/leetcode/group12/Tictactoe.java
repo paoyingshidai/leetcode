@@ -70,22 +70,21 @@ public class Tictactoe {
         int a = 0, b = 0, len = moves.length;
         // ac records all cases of winning
         int[] ac = {7, 56, 448, 73, 146, 292, 273, 84};
-        for(int i = 0; i < len; i ++){
+        for(int i = 0; i < len; i ++) {
             // if i is add
-            if((i & 1) == 1){
+            if((i & 1) == 1) {
                 // record the step result
                 b ^= 1 << (3 * moves[i][0] + moves[i][1]);
-            }
-            else {
+            } else {
                 a ^= 1 << (3 * moves[i][0] + moves[i][1]);
             }
         }
-        for(int i : ac){
+        for(int i : ac) {
             // if the moving result contains the winning case in record, then win
-            if((a & i) == i){
+            if((a & i) == i) {
                 return "A";
             }
-            if((b & i) == i){
+            if((b & i) == i) {
                 return "B";
             }
         }
